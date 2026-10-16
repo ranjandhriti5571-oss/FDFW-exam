@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Login</h2>
+<input id="u" placeholder="Username">
+<input id="p" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<button onclick="logout()">Logout</button>
+<h2 id="msg"></h2>
+
+<script>
+function login() {
+    let u = document.getElementById("u").value;
+    let p = document.getElementById("p").value;
+
+    if (u == "admin" && p == "123") {
+        sessionStorage.setItem("user", u);
+        localStorage.setItem("username", u);
+        document.getElementById("msg").innerHTML = "Welcome " + u;
+    } else {
+        document.getElementById("msg").innerHTML = "Invalid Login";
+    }
+}
+
+function logout() {
+    sessionStorage.clear();
+    localStorage.clear();
+    document.getElementById("msg").innerHTML = "Logged Out";
+}
+
+if (!sessionStorage.getItem("user")) {
+    document.getElementById("msg").innerHTML = "Please Login";
+}
+</script>
+</body>
+</html>
